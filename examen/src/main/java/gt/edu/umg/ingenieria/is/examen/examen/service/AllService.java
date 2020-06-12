@@ -1,6 +1,8 @@
 package gt.edu.umg.ingenieria.is.examen.examen.service;
 import java.util.ArrayList;
 import static java.util.Collections.reverse;
+import java.util.List;
+import static jdk.vm.ci.meta.JavaKind.Int;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -39,6 +41,7 @@ public class AllService extends Exception{
         listaOrdenada = elements;
         return listaOrdenada; 
     }
+//**************************************************************************    
     
 //Algoritmo de ordenamiento de burbuja**************************************
     public ArrayList<Long> bubbleSort(ArrayList<Long> elements)throws Exception, AllService{
@@ -65,7 +68,7 @@ public class AllService extends Exception{
         listaOrdenada = elements;
         return listaOrdenada; 
     }
-
+//************************************************************************** 
 
 //Algoritmo de ordenamiento de burbuja**************************************
     public ArrayList<Long> insertionSort(ArrayList<Long> elements)throws Exception, AllService{
@@ -92,6 +95,7 @@ public class AllService extends Exception{
         listaOrdenada = elements;
         return listaOrdenada;
     }
+ //************************************************************************** 
     
 //Algoritmo de ordenamiento de quicksort**************************************   
     public ArrayList<Long> quickSort(ArrayList<Long> elements,int primero, int ultimo)throws Exception, AllService{
@@ -128,25 +132,37 @@ public class AllService extends Exception{
         listaOrdenada = elements;
         return listaOrdenada;
     }
- 
+ //************************************************************************** 
+    
     
 //Algoritmo de triangulo de pascal**************************************   
-    public ArrayList<String> pascalTriangle(int pisos)throws Exception, AllService{
-        ArrayList<String> aux = null;
-        ArrayList<String> lista = null;
-        for(int i=1; i<=pisos;i++){
-            ArrayList<String> pascal;
-            for(int k=pisos;k>i;k--){
-                lista.set(i,aux.get(i)+" ");
-            }
-            for(int j=0; j<i; j++){
-                if(j==0||j==(i-1)){
-                   // lista                   
-                }
+    public static int triangulo(int a, int b){
+        if(b==0||a==b){
+            return 1;
+        } else {
+            return triangulo(a-1,b-1) + triangulo(a-1,b);
+        }
+    }    
+    public ArrayList<String> pascalTriangle(int nfilas)throws Exception, AllService{
+        ArrayList<String> lista = new ArrayList();
+        if(nfilas<1||nfilas>10000){
+           throw new AllService();
+        } 
+        int triangulo[][] = new int[nfilas][nfilas];        
+        for(int i=0; i<nfilas;i++){
+            for(int j=0; j<=i; j++){
+                triangulo[i][j]= triangulo(i,j);
             }
         }
-        
-        
-        return null;
+        for(int i=0; i<nfilas; i++){
+            for(int j=0; j<=i; j++){
+                lista.add(" "+triangulo[i][j]);
+            }
+            int r=i+1;
+            lista.add("------Fila: "+r+" ------");
+        }
+        return lista;
     }
+ //************************************************************************** 
+    
 }

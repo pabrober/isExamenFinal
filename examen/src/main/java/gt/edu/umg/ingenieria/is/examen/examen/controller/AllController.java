@@ -2,10 +2,13 @@ package gt.edu.umg.ingenieria.is.examen.examen.controller;
 import gt.edu.umg.ingenieria.is.examen.examen.service.AllService;
 import java.util.ArrayList;
 import static java.util.Collections.reverse;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -39,5 +42,18 @@ public class AllController {
         }      
       return aux;  
     }
+    @RequestMapping(value="pascalTriangle/{elements}", method=RequestMethod.GET)
+    public List<String> pascalTrian5gle(@PathVariable int nfilas) throws Exception{
+    return this.allServices.pascalTriangle(nfilas);
+    }
+    
+    @GetMapping("/pascalTriangle")
+   public ArrayList<String> pascalTriangle( @RequestParam(name = "levels") int nfilas) throws Exception{     
+       return this.allServices.pascalTriangle(nfilas);
+   
+   } 
+    
+    
+    
 }
 
