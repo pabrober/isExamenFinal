@@ -5,7 +5,10 @@
  */
 package gt.edu.umg.ingenieria.is.examen.examen.controller;
 
+import gt.edu.umg.ingenieria.is.examen.examen.service.AllService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -14,6 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class AllController {
+    @Autowired
+    public AllService ser;
+    
+    //7-----GENETICALGORITHM-----START
+    @PostMapping("/ia")
+    public int geneticalgorithm(@RequestParam Long generation) //camniar tipo para el JSON
+    {
+               return 0; 
+    }
+    //7-----GENETICALGORITHM-----END
     
     @PostMapping("/saludo")
     public String Saludo(){
