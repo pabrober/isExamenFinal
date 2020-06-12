@@ -24,8 +24,8 @@ public class AllController {
    private AllService allServices;
          
     @RequestMapping(value="tree/binary", method=RequestMethod.GET)
-    public ArrayList<Long> addBinaryTree(@RequestParam(name = "data") ArrayList<Long> elements){
-    return this.allServices.createBinaryTree(elements);
+    public long[] addBinaryTree(@RequestParam(name = "data") int[] arr){
+    return null;
     }
 }
 
