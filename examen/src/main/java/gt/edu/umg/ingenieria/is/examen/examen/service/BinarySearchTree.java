@@ -75,6 +75,30 @@ public class BinarySearchTree {
         }
     }
 
+    void preorder() {
+        preorderRec(root);
+    }
+
+    void preorderRec(Node root) {
+        if (root != null) {
+            System.out.print(" " + root.key);
+            preorderRec(root.left);
+            preorderRec(root.right);
+        }
+    }
+
+    void postorder() {
+        postorderRec(root);
+    }
+
+    void postorderRec(Node root) {
+        if (root != null) {
+            postorderRec(root.left);
+            postorderRec(root.right);
+            System.out.print(" " + root.key);
+        }
+    }
+
     // Driver Program to test above functions 
     public void main(int elements[]) {
         BinarySearchTree tree = new BinarySearchTree();
@@ -89,9 +113,14 @@ public class BinarySearchTree {
             tree.insert(elements[i]);
 
             // print inorder traversal of the BST
-            
         }
-        System.out.println("Prefix: ");
+        System.out.println("In order: /n");
         tree.inorder();
+
+        System.out.println("/nPre order: /n");
+        tree.preorder();
+
+        System.out.println("/nPost order: /n");
+        tree.postorder();
     }
 }
