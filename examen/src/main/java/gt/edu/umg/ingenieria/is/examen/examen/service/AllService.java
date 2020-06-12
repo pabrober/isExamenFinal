@@ -11,4 +11,8 @@ package gt.edu.umg.ingenieria.is.examen.examen.service;
  */
 public class AllService {
     
+    
+    public static void main(String[] args) {		
+		System.out.println("Hola Mundo");
+	}
 }
