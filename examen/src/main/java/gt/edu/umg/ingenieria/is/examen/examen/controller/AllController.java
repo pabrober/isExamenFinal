@@ -5,7 +5,12 @@
  */
 package gt.edu.umg.ingenieria.is.examen.examen.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
+import gt.edu.umg.ingenieria.is.examen.examen.service.AllService;
+import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -15,9 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AllController {
     
-    @PostMapping("/saludo")
-    public String Saludo(){
-       return "hola";               
+   @Autowired 
+   private AllService allServices;
+         
+    @RequestMapping(value="tree/binary", method=RequestMethod.GET)
+    public ArrayList<Long> addBinaryTree(@RequestParam(name = "data") ArrayList<Long> elements){
+    return this.allServices.createBinaryTree(elements);
     }
 }
 
