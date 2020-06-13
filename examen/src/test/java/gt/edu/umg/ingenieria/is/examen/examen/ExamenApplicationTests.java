@@ -64,8 +64,11 @@ public class ExamenApplicationTests {
         //when
         actual = this.testRestTemplate.getForObject(String.format("http://localhost:%d/ia?generation=%d", this.port, generation), HashMap.class);                
         //actual = this.ser.proporcionPobla(generation);        
+        actual.get("Detail");
         
-        //then         
-        //Assertions.assertEquals(actual, expected, "Limites exedidos");        
+        //then    
+         int i=2;
+        //Assertions.assertEquals(actual, expected, "tabla hash generada");        
     }
+       
 }
