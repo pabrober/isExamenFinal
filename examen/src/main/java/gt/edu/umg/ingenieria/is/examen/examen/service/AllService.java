@@ -43,6 +43,7 @@ public class AllService {
         List<Integer> x = new ArrayList<Integer>();
         List<Integer> z = new ArrayList<Integer>();
         List<Integer> y = new ArrayList<Integer>();
+
         // Constructor 
         BinarySearchTree() {
             root = null;
@@ -75,21 +76,19 @@ public class AllService {
 
         // This method mainly calls InorderRec() 
         List<Integer> inorder() {
-             return inorderRec(root);
+            return inorderRec(root);
         }
 
         // A utility function to do inorder traversal of BT 
         List<Integer> inorderRec(Node root) {
-            
-            
+
             if (root != null) {
                 inorderRec(root.left);
-                x.add(root.key);    
+                x.add(root.key);
                 //System.out.println(root.key);
                 inorderRec(root.right);
-                //return map;
             }
-           return x;
+            return x;
         }
 
         List<Integer> preorder() {
@@ -97,13 +96,12 @@ public class AllService {
         }
 
         List<Integer> preorderRec(Node root) {
-            
+
             if (root != null) {
                 z.add(root.key);
                 //System.out.print(" \n" + root.key);
                 preorderRec(root.left);
                 preorderRec(root.right);
-                //return map;
             }
             return z;
         }
@@ -111,36 +109,23 @@ public class AllService {
         List<Integer> postorder() {
             return postorderRec(root);
         }
-        
+
         List<Integer> postorderRec(Node root) {
-            
+
             if (root != null) {
                 postorderRec(root.left);
                 postorderRec(root.right);
                 y.add(root.key);
                 //System.out.print(" \n" + root.key);
-                
-            //return map;
             }
             return y;
         }
 
         // Driver Program to test above functions 
-        public  HashMap<String, List<Integer>> main(int elements[]) {
+        public HashMap<String, List<Integer>> main(int elements[]) {
             BinarySearchTree tree = new BinarySearchTree();
-            
-            
+
             HashMap<String, List<Integer>> subjects = new HashMap<>();
-            
-            
-            
-            //Map<String, List<Integer>> map = new HashMap<String, List<Integer>>();
-            
-            //map.put("Inorder", new ArrayList<Integer>(tree.inorder()));
-           //map.put("mango", new ArrayList<Integer>((tree.inorder())));
-           
-            //subjects = new HashMap<String, Integer[]>();
-           // subjects.put("calculus", tree.inorder());
 
             /* Let us create following Tree 
               50 
@@ -148,18 +133,14 @@ public class AllService {
           30      70 
          /  \    /  \ 
        20   40  60   80 */
-            
             for (int i = 0; i < elements.length; i++) {
                 tree.insert(elements[i]);
-
-                // print inorder traversal of the BST
             }
-            
+
             subjects.put("Pre Order", tree.preorder());
             subjects.put("In Order", tree.inorder());
             subjects.put("Post Order", tree.postorder());
-            
-            
+
             return subjects;
 
         }
