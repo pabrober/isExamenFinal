@@ -4,11 +4,10 @@
  * and open the template in the editor.
  */
 package gt.edu.umg.ingenieria.is.examen.examen.service;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Collections;
 import org.springframework.stereotype.Service;
-
 
 /**
  *
@@ -17,17 +16,52 @@ import org.springframework.stereotype.Service;
 @Service
 public class AllService {
     
-     public HashMap<String, String> test (){
+    //7-----GENETIC ALGORITHM-----START
+    public Long[] genes(Long muestra)
+    {
+        //algoritmo de genes
+        double propo = Math.random()*0.9+0.1;
+        //  canitad hombres
+        Long hombres = Math.round(muestra * propo);
+        //  cantidad mujeres
+        Long mujeres = muestra - hombres;
+        
+        Long[] data = {hombres,mujeres}; 
+        
+        return data;
+    }
+    
+    public HashMap<String, String> proporcionPobla(Long muestra){
         HashMap<String, String> map = new HashMap<>();
-        int a = 45, b=60,c=150;        
-        ArrayList<String> array1 = new ArrayList<String>();
-        for (int i=1; i<=10; i++){
-	array1.add("Elemento "+i); 
+        Long[] datapro = this.genes(muestra); 
+        int  porcentajeHombres = 0, porcentajeMujeres=0;
+        ArrayList<String> detail = new ArrayList<String>();
+        
+        if(muestra>=1 && muestra<=10000)
+        {
+            //porcentaje hombre
+            porcentajeHombres = Math.round((datapro[0]*100)/muestra);
+            //porcentaje mujeres
+            porcentajeMujeres = 100 - porcentajeHombres;
+        
+            for(int i = 0;i<datapro[0];i++)
+            {
+                detail.add("h");
+            }
+            for(int j = 0;j<datapro[1];j++)
+            {
+                detail.add("m");
+            }                
+            Collections.shuffle(detail);           
         }
-        map.put("man", Integer.toString(a)+"%" );
-        map.put("woman", Integer.toString(b)+"%" );
-        map.put("lista", array1.toString());
-        return map;
-    }    
+               
+        map.put("women", Integer.toString(porcentajeMujeres)+"%" );
+         map.put("Detail", detail.toString());
+        map.put("man", Integer.toString(porcentajeHombres)+"%" );        
+               
+        return map;                
+    }           
+     
+     //7-----GENETIC ALGORITHM-----END
         
 }

@@ -6,13 +6,13 @@
 package gt.edu.umg.ingenieria.is.examen.examen.controller;
 
 import gt.edu.umg.ingenieria.is.examen.examen.service.AllService;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.Map;
 
 /**
- *
  * @author pc
  */
 @RestController
@@ -21,16 +21,12 @@ public class AllController {
     @Autowired
     private AllService ser;        
     
-    @PostMapping("/test")
-    public Map<String, String> test() {    
-    return this.ser.test();
-
+     //7-----GENETIC ALGORITHM-----START
+    @PostMapping("/ia")
+    public Map<String, String> geneticalgorithm(@RequestParam Long generation) {    
+    return this.ser.proporcionPobla(generation);
     }
+           
+    //7-----GENETIC ALGORITHM-----END
     
 }
-
-        
-    
-    
-
-
