@@ -14,19 +14,22 @@ import org.springframework.stereotype.Service;
  * @author pc
  */
 @Service
-public class AllService  {
-   //Inciso 6 Hoja de excel Inicio
+public class AllService extends Exception  {
+  //Exceptions
+  public AllService(){
+        super("Número de elementos fuera de rango");
+    }    
+ //Inciso 6 Hoja de excel Inicio
    public String str(int i) {
-    return i < 0 ? "" : str((i / 26) - 1) + (char)(65 + i % 26);
-    //Inciso 6 Hoja de excel Fin
+    return i < 0 ? "" : str((i / 26) - 1) + (char)(65 + i % 26); 
 }
-   //Inciso 6 Hoja de excel Inicio
-  public ArrayList<String> excel(Integer repeat) {
+  public ArrayList<String> excel(Integer repeat) throws Exception, AllService{
    ArrayList<String> letras = new ArrayList<String>();
-   if(repeat >1 && repeat < 100000){
+   if(repeat <1 || repeat > 100000){
+        throw new AllService();
+        }
    for (int i = 0; i < repeat; ++i) {
        letras.add(this.str(i));
-   }
   }
       return letras;
   }
