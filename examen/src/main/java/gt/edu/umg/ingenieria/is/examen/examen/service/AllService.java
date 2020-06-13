@@ -14,6 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @Service
+public class AllService{
+    
+@Transactional
+@Service   
 public class BinarySearchTree {
 
     /* Class containing left and right child of current node and key value*/
@@ -28,7 +32,7 @@ public class BinarySearchTree {
         }
     }
 
-    // Root of BST 
+    // Root 
     Node root;
 
     // Constructor 
@@ -41,7 +45,7 @@ public class BinarySearchTree {
         root = insertRec(root, key);
     }
 
-    /* A recursive function to insert a new key in BST */
+    /* A recursive function to insert a new key in BT */
     Node insertRec(Node root, int key) {
 
         /* If the tree is empty, return a new node */
@@ -66,7 +70,7 @@ public class BinarySearchTree {
         inorderRec(root);
     }
 
-    // A utility function to do inorder traversal of BST 
+    // A utility function to do inorder traversal of BT 
     void inorderRec(Node root) {
         if (root != null) {
             inorderRec(root.left);
@@ -81,7 +85,7 @@ public class BinarySearchTree {
 
     void preorderRec(Node root) {
         if (root != null) {
-            System.out.print(" " + root.key);
+            System.out.print(" \n" + root.key);
             preorderRec(root.left);
             preorderRec(root.right);
         }
@@ -95,7 +99,7 @@ public class BinarySearchTree {
         if (root != null) {
             postorderRec(root.left);
             postorderRec(root.right);
-            System.out.print(" " + root.key);
+            System.out.print(" \n" + root.key);
         }
     }
 
@@ -103,24 +107,27 @@ public class BinarySearchTree {
     public void main(int elements[]) {
         BinarySearchTree tree = new BinarySearchTree();
 
-        /* Let us create following BST 
+        /* Let us create following Tree 
               50 
            /     \ 
           30      70 
          /  \    /  \ 
        20   40  60   80 */
+        
+        
         for (int i = 0; i < elements.length; i++) {
             tree.insert(elements[i]);
 
             // print inorder traversal of the BST
         }
-        System.out.println("In order: /n");
+        System.out.println("\nIn order:");
         tree.inorder();
 
-        System.out.println("/nPre order: /n");
+        System.out.println("\nPre order:");
         tree.preorder();
 
-        System.out.println("/nPost order: /n");
+        System.out.println("\nPost order:");
         tree.postorder();
     }
 }
+        }
