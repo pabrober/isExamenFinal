@@ -57,15 +57,18 @@ public class ExamenApplicationTests {
     @Test
     public void item7test3() {
         //given                                
-        final Long generation = new Long(100);
-        HashMap<String, String> expected = new HashMap<>(); 
+        final Long generation = new Long(5);
+        final int expected = 15;
+        final String getDetail;
+        final int lenghtOfDetail;
         HashMap<String, String> actual = new HashMap<>(); 
-
         //when
         actual = this.testRestTemplate.getForObject(String.format("http://localhost:%d/ia?generation=%d", this.port, generation), HashMap.class);                
-        //actual = this.ser.proporcionPobla(generation);        
-        
+        //actual = this.ser.proporcionPobla(generation);       
+        getDetail = actual.get("Detail");
+        lenghtOfDetail = getDetail.length();
+        int a = 1;
         //then         
-        //Assertions.assertEquals(actual, expected, "Limites exedidos");        
+        Assertions.assertEquals(lenghtOfDetail, expected, "Population´s details doesn´t matched");        
     }
 }
