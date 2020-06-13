@@ -71,13 +71,12 @@ public class AllService extends Exception {
 
          
         List<Integer> inorder() {
-             return inorderRec(root);
+            return inorderRec(root);
         }
 
          
         List<Integer> inorderRec(Node root) {
-            
-            
+
             if (root != null) {
                 inorderRec(root.left);
                 x.add(root.key);    
@@ -85,7 +84,7 @@ public class AllService extends Exception {
                 inorderRec(root.right);
                 
             }
-           return x;
+            return x;
         }
 
         List<Integer> preorder() {
@@ -93,7 +92,7 @@ public class AllService extends Exception {
         }
 
         List<Integer> preorderRec(Node root) {
-            
+
             if (root != null) {
                 z.add(root.key);
                 preorderRec(root.left);
@@ -106,9 +105,9 @@ public class AllService extends Exception {
         List<Integer> postorder() {
             return postorderRec(root);
         }
-        
+
         List<Integer> postorderRec(Node root) {
-            
+
             if (root != null) {
                 postorderRec(root.left);
                 postorderRec(root.right);
