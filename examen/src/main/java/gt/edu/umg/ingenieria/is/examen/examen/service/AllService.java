@@ -52,7 +52,7 @@ public class AllService {
 
             map.put("women", Integer.toString(porcentajeMujeres) + "%");
             map.put("Detail", detail.toString());
-            map.put("man", Integer.toString(porcentajeHombres) + "%");
+            map.put("men", Integer.toString(porcentajeHombres) + "%");
         } else {
             map.put("error", "numero invalido");
         }

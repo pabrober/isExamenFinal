@@ -24,7 +24,7 @@ public class ExamenApplicationTests {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
-
+    //7-----TEST FOR GENETIC ALGORITHM-----START
     @Test
     public void item7test1() {
         //given                     
@@ -45,11 +45,9 @@ public class ExamenApplicationTests {
         final Long generation = new Long(10001);
         HashMap<String, String> expected = new HashMap<>(); 
         HashMap<String, String> actual = new HashMap<>(); 
-
         //when        
         actual = this.ser.proporcionPobla(generation);
         expected.put("error", "numero invalido");
-        
         //then         
         Assertions.assertEquals(actual, expected, "Limites exedidos");        
     }
@@ -63,12 +61,30 @@ public class ExamenApplicationTests {
         final int lenghtOfDetail;
         HashMap<String, String> actual = new HashMap<>(); 
         //when
-        actual = this.testRestTemplate.getForObject(String.format("http://localhost:%d/ia?generation=%d", this.port, generation), HashMap.class);                
-        //actual = this.ser.proporcionPobla(generation);       
+        actual = this.testRestTemplate.getForObject(String.format("http://localhost:%d/ia?generation=%d", this.port, generation), HashMap.class);                       
         getDetail = actual.get("Detail");
         lenghtOfDetail = getDetail.length();
-        int a = 1;
         //then         
         Assertions.assertEquals(lenghtOfDetail, expected, "Population´s details doesn´t matched");        
     }
+    
+    @Test
+    public void item7test4() {
+        //This Unit Test is to test the calculation of proportions.
+        //given                                
+        final Long generation = new Long(130);
+        final int expected = 100;
+        final int actual;
+        String temp1;
+        String temp2;
+        HashMap<String, String> actualser = new HashMap<>(); 
+        //when
+        actualser = this.testRestTemplate.getForObject(String.format("http://localhost:%d/ia?generation=%d", this.port, generation), HashMap.class);                       
+        temp1 = actualser.get("men").replaceAll("%","").replaceAll(" ", "").trim();
+        temp2 = actualser.get("women").replaceAll("%","").replaceAll(" ", "").trim();
+        actual = Integer.parseInt(temp1) + Integer.parseInt(temp2);
+        //then         
+        Assertions.assertEquals(actual, expected, "Proportions are wrong");        
+    }
+    //7-----TEST FOR GENETIC ALGORITHM-----START
 }
