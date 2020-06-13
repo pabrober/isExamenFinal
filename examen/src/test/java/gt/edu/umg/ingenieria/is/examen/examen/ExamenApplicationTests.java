@@ -86,5 +86,5 @@ public class ExamenApplicationTests {
         //then         
         Assertions.assertEquals(actual, expected, "Proportions are wrong");        
     }
-    //7-----TEST FOR GENETIC ALGORITHM-----START
+    //7-----TEST FOR GENETIC ALGORITHM-----END
 }
