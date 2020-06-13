@@ -5,7 +5,12 @@
  */
 package gt.edu.umg.ingenieria.is.examen.examen.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import static java.util.Collections.list;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,7 +40,9 @@ public class AllService {
 
         // Root 
         Node root;
-
+        List<Integer> x = new ArrayList<Integer>();
+        List<Integer> z = new ArrayList<Integer>();
+        List<Integer> y = new ArrayList<Integer>();
         // Constructor 
         BinarySearchTree() {
             root = null;
@@ -67,46 +74,73 @@ public class AllService {
         }
 
         // This method mainly calls InorderRec() 
-        void inorder() {
-            inorderRec(root);
+        List<Integer> inorder() {
+             return inorderRec(root);
         }
 
         // A utility function to do inorder traversal of BT 
-        void inorderRec(Node root) {
+        List<Integer> inorderRec(Node root) {
+            
+            
             if (root != null) {
                 inorderRec(root.left);
-                System.out.println(root.key);
+                x.add(root.key);    
+                //System.out.println(root.key);
                 inorderRec(root.right);
+                //return map;
             }
+           return x;
         }
 
-        void preorder() {
-            preorderRec(root);
+        List<Integer> preorder() {
+            return preorderRec(root);
         }
 
-        void preorderRec(Node root) {
+        List<Integer> preorderRec(Node root) {
+            
             if (root != null) {
-                System.out.print(" \n" + root.key);
+                z.add(root.key);
+                //System.out.print(" \n" + root.key);
                 preorderRec(root.left);
                 preorderRec(root.right);
+                //return map;
             }
+            return z;
         }
 
-        void postorder() {
-            postorderRec(root);
+        List<Integer> postorder() {
+            return postorderRec(root);
         }
-
-        void postorderRec(Node root) {
+        
+        List<Integer> postorderRec(Node root) {
+            
             if (root != null) {
                 postorderRec(root.left);
                 postorderRec(root.right);
-                System.out.print(" \n" + root.key);
+                y.add(root.key);
+                //System.out.print(" \n" + root.key);
+                
+            //return map;
             }
+            return y;
         }
 
         // Driver Program to test above functions 
-        public void main(int elements[]) {
+        public  HashMap<String, List<Integer>> main(int elements[]) {
             BinarySearchTree tree = new BinarySearchTree();
+            
+            
+            HashMap<String, List<Integer>> subjects = new HashMap<>();
+            
+            
+            
+            //Map<String, List<Integer>> map = new HashMap<String, List<Integer>>();
+            
+            //map.put("Inorder", new ArrayList<Integer>(tree.inorder()));
+           //map.put("mango", new ArrayList<Integer>((tree.inorder())));
+           
+            //subjects = new HashMap<String, Integer[]>();
+           // subjects.put("calculus", tree.inorder());
 
             /* Let us create following Tree 
               50 
@@ -120,14 +154,13 @@ public class AllService {
 
                 // print inorder traversal of the BST
             }
-            System.out.println("\nIn order:");
-            tree.inorder();
-
-            System.out.println("\nPre order:");
-            tree.preorder();
-
-            System.out.println("\nPost order:");
-            tree.postorder();
+            
+            subjects.put("Pre Order", tree.preorder());
+            subjects.put("In Order", tree.inorder());
+            subjects.put("Post Order", tree.postorder());
+            
+            
+            return subjects;
 
         }
     }
