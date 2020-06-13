@@ -5,6 +5,7 @@
  */
 package gt.edu.umg.ingenieria.is.examen.examen.service;
 
+import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,120 +15,120 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @Service
-public class AllService{
-    
-@Transactional
-@Service   
-public class BinarySearchTree {
+public class AllService {
 
-    /* Class containing left and right child of current node and key value*/
-    class Node {
+    @Transactional
+    @Service
+    public class BinarySearchTree {
 
-        int key;
-        Node left, right;
+        /* Class containing left and right child of current node and key value*/
+        class Node {
 
-        public Node(int item) {
-            key = item;
-            left = right = null;
+            int key;
+            Node left, right;
+
+            public Node(int item) {
+                key = item;
+                left = right = null;
+            }
         }
-    }
 
-    // Root 
-    Node root;
+        // Root 
+        Node root;
 
-    // Constructor 
-    BinarySearchTree() {
-        root = null;
-    }
+        // Constructor 
+        BinarySearchTree() {
+            root = null;
+        }
 
-    // This method mainly calls insertRec() 
-    void insert(int key) {
-        root = insertRec(root, key);
-    }
+        // This method mainly calls insertRec() 
+        void insert(int key) {
+            root = insertRec(root, key);
+        }
 
-    /* A recursive function to insert a new key in BT */
-    Node insertRec(Node root, int key) {
+        /* A recursive function to insert a new key in BT */
+        Node insertRec(Node root, int key) {
 
-        /* If the tree is empty, return a new node */
-        if (root == null) {
-            root = new Node(key);
+            /* If the tree is empty, return a new node */
+            if (root == null) {
+                root = new Node(key);
+                return root;
+            }
+
+            /* Otherwise, recur down the tree */
+            if (key < root.key) {
+                root.left = insertRec(root.left, key);
+            } else if (key > root.key) {
+                root.right = insertRec(root.right, key);
+            }
+
+            /* return the (unchanged) node pointer */
             return root;
         }
 
-        /* Otherwise, recur down the tree */
-        if (key < root.key) {
-            root.left = insertRec(root.left, key);
-        } else if (key > root.key) {
-            root.right = insertRec(root.right, key);
+        // This method mainly calls InorderRec() 
+        void inorder() {
+            inorderRec(root);
         }
 
-        /* return the (unchanged) node pointer */
-        return root;
-    }
-
-    // This method mainly calls InorderRec() 
-    void inorder() {
-        inorderRec(root);
-    }
-
-    // A utility function to do inorder traversal of BT 
-    void inorderRec(Node root) {
-        if (root != null) {
-            inorderRec(root.left);
-            System.out.println(root.key);
-            inorderRec(root.right);
+        // A utility function to do inorder traversal of BT 
+        void inorderRec(Node root) {
+            if (root != null) {
+                inorderRec(root.left);
+                System.out.println(root.key);
+                inorderRec(root.right);
+            }
         }
-    }
 
-    void preorder() {
-        preorderRec(root);
-    }
-
-    void preorderRec(Node root) {
-        if (root != null) {
-            System.out.print(" \n" + root.key);
-            preorderRec(root.left);
-            preorderRec(root.right);
+        void preorder() {
+            preorderRec(root);
         }
-    }
 
-    void postorder() {
-        postorderRec(root);
-    }
-
-    void postorderRec(Node root) {
-        if (root != null) {
-            postorderRec(root.left);
-            postorderRec(root.right);
-            System.out.print(" \n" + root.key);
+        void preorderRec(Node root) {
+            if (root != null) {
+                System.out.print(" \n" + root.key);
+                preorderRec(root.left);
+                preorderRec(root.right);
+            }
         }
-    }
 
-    // Driver Program to test above functions 
-    public void main(int elements[]) {
-        BinarySearchTree tree = new BinarySearchTree();
+        void postorder() {
+            postorderRec(root);
+        }
 
-        /* Let us create following Tree 
+        void postorderRec(Node root) {
+            if (root != null) {
+                postorderRec(root.left);
+                postorderRec(root.right);
+                System.out.print(" \n" + root.key);
+            }
+        }
+
+        // Driver Program to test above functions 
+        public void main(int elements[]) {
+            BinarySearchTree tree = new BinarySearchTree();
+
+            /* Let us create following Tree 
               50 
            /     \ 
           30      70 
          /  \    /  \ 
        20   40  60   80 */
-        
-        
-        for (int i = 0; i < elements.length; i++) {
-            tree.insert(elements[i]);
+            
+            for (int i = 0; i < elements.length; i++) {
+                tree.insert(elements[i]);
 
-            // print inorder traversal of the BST
+                // print inorder traversal of the BST
+            }
+            System.out.println("\nIn order:");
+            tree.inorder();
+
+            System.out.println("\nPre order:");
+            tree.preorder();
+
+            System.out.println("\nPost order:");
+            tree.postorder();
+
         }
-        System.out.println("\nIn order:");
-        tree.inorder();
-
-        System.out.println("\nPre order:");
-        tree.preorder();
-
-        System.out.println("\nPost order:");
-        tree.postorder();
     }
 }
-        }
