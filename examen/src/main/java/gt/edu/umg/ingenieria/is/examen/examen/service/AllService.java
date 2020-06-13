@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AllService {    
+    
     //7-----GENETIC ALGORITHM-----START
     public Long[] genes(Long muestra) {
         //algoritmo de genes
@@ -58,7 +59,5 @@ public class AllService {
         }
         return map;
     }
-
     //7-----GENETIC ALGORITHM-----END
-    //8------------------    
 }

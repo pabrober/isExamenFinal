@@ -24,6 +24,7 @@ public class ExamenApplicationTests {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
+    
     //7-----TEST FOR GENETIC ALGORITHM-----START
     @Test
     public void item7test1() {
@@ -85,6 +86,28 @@ public class ExamenApplicationTests {
         actual = Integer.parseInt(temp1) + Integer.parseInt(temp2);
         //then         
         Assertions.assertEquals(actual, expected, "Proportions are wrong");        
+    }
+    
+    @Test
+    public void item7test5() {
+        //This Unit Test is to test the mutation proportions.
+        //given                                
+        final Long generation = new Long(150);
+        final int expected = 0;
+        final int actual1;
+        final int actual2;
+        String temp1;
+        String temp2;
+        HashMap<String, String> actualser = new HashMap<>(); 
+        //when
+        actualser = this.testRestTemplate.getForObject(String.format("http://localhost:%d/ia?generation=%d", this.port, generation), HashMap.class);                       
+        temp1 = actualser.get("men").replaceAll("%","").replaceAll(" ", "").trim();
+        temp2 = actualser.get("women").replaceAll("%","").replaceAll(" ", "").trim();
+        actual1 = Integer.parseInt(temp1);
+        actual2 = Integer.parseInt(temp2);
+        //then
+        Assertions.assertNotEquals(expected, actual1,"Men´s mutation can´t be 0%");
+        Assertions.assertNotEquals(expected, actual2,"Women´s mutation can´t be 0%");        
     }
     //7-----TEST FOR GENETIC ALGORITHM-----END
 }
