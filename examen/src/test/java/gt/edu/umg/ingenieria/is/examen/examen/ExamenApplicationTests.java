@@ -27,6 +27,7 @@ public class ExamenApplicationTests {
 
     @Test
     public void item7test1() {
+        //comprobamos funcion de servicio
         //given                     
         final Long generation = new Long(100);
         final Long expected = new Long (100); 
@@ -41,6 +42,7 @@ public class ExamenApplicationTests {
     
    @Test
     public void item7test2() {
+        //comprovamos funcion de servicio
         //given                                
         final Long generation = new Long(10001);
         HashMap<String, String> expected = new HashMap<>(); 
@@ -56,19 +58,37 @@ public class ExamenApplicationTests {
 
     @Test
     public void item7test3() {
+        
         //given                                
-        final Long generation = new Long(100);
-        HashMap<String, String> expected = new HashMap<>(); 
+        final Long generation = new Long(5);
+        final int expected = 15;
+        final String getDetail;
+        final int lenghtOfDetail;
         HashMap<String, String> actual = new HashMap<>(); 
-
         //when
         actual = this.testRestTemplate.getForObject(String.format("http://localhost:%d/ia?generation=%d", this.port, generation), HashMap.class);                
-        //actual = this.ser.proporcionPobla(generation);        
-        actual.get("Detail");
-        
-        //then    
-         int i=2;
-        //Assertions.assertEquals(actual, expected, "tabla hash generada");        
+        //actual = this.ser.proporcionPobla(generation);       
+        getDetail = actual.get("Detail");
+        lenghtOfDetail = getDetail.length();        
+        //then         
+        Assertions.assertEquals(lenghtOfDetail, expected, "Population´s details doesn´t matched");        
     }
-       
+    
+    @Test
+    public void item7test4() {
+        
+        //given                                
+        final Long generation = new Long(5);
+        final int expected = 15;
+        final String getDetail;
+        final int lenghtOfDetail;
+        HashMap<String, String> actual = new HashMap<>(); 
+        //when
+        actual = this.testRestTemplate.getForObject(String.format("http://localhost:%d/ia?generation=%d", this.port, generation), HashMap.class);                
+        //actual = this.ser.proporcionPobla(generation);       
+        getDetail = actual.get("Detail");
+        lenghtOfDetail = getDetail.length();        
+        //then         
+        Assertions.assertEquals(lenghtOfDetail, expected, "Population´s details doesn´t matched");        
+    }
 }
