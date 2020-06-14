@@ -25,7 +25,7 @@ public class AllController {
     private AllService ser;
     //Inciso 6 Hoja de excel Inicio
       @GetMapping("/book/sheet")
-        public ArrayList<String> excel(@RequestParam Integer columns) {
+        public ArrayList<String> excel(@RequestParam Integer columns) throws Exception {
         return this.ser.excel(columns);
     }
     //Inciso 6 Hoja de excel Fin

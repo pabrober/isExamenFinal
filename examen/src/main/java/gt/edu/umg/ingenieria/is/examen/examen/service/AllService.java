@@ -9,10 +9,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author pc
- */
 @Service
 public class AllService extends Exception  {
   //Exceptions
