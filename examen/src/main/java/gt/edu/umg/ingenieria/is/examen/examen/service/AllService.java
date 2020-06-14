@@ -13,6 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AllService extends Exception {
 
+    public class PositiveNumber extends Exception {
+    
+    public PositiveNumber(){
+        super("Los números ingresados deben ser positivos");
+    }
+    
+}
     
   public AllService(){
         super("Número de elementos fuera de rango");
@@ -118,7 +125,7 @@ public class AllService extends Exception {
         }
 
 
-        public  HashMap<String, List<Integer>> createTree(int elements[]) throws Exception, AllService {
+        public  HashMap<String, List<Integer>> createTree(int elements[]) throws Exception, AllService, PositiveNumber {
            if(elements.length<2||elements.length >1000){
            throw new AllService();
         }
@@ -130,6 +137,9 @@ public class AllService extends Exception {
             
             
             for (int i = 0; i < elements.length; i++) {
+                if(elements[i]<0){
+                    throw new PositiveNumber();
+                }
                 tree.insert(elements[i]);
 
             }
