@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AllService {    
+    
     //7-----GENETIC ALGORITHM-----START
     public Long[] genes(Long muestra) {
         //algoritmo de genes
@@ -52,13 +53,11 @@ public class AllService {
 
             map.put("women", Integer.toString(porcentajeMujeres) + "%");
             map.put("Detail", detail.toString());
-            map.put("man", Integer.toString(porcentajeHombres) + "%");
+            map.put("men", Integer.toString(porcentajeHombres) + "%");
         } else {
             map.put("error", "numero invalido");
         }
         return map;
     }
-
     //7-----GENETIC ALGORITHM-----END
-    //8------------------    
 }
