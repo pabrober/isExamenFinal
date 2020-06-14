@@ -126,7 +126,7 @@ public class AllService extends Exception {
 
 
         public  HashMap<String, List<Integer>> createTree(int elements[]) throws Exception, AllService, PositiveNumber {
-           if(elements.length<1){
+           if(elements.length<1 && elements.length >1000000){
            throw new AllService();
         }
             
@@ -137,7 +137,7 @@ public class AllService extends Exception {
             
             
             for (int i = 0; i < elements.length; i++) {
-                if(elements[i]<1 && elements[i]>1000000 ){
+                if(elements[i]<1){
                     throw new PositiveNumber();
                 }
                 tree.insert(elements[i]);
