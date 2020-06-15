@@ -17,7 +17,7 @@ public class AllService extends Exception  {
     }    
  //Inciso 6 Hoja de excel Inicio
    public String str(int i) {
-    return i < 0 ? "" : str((i / 26) - 1) + (char)(65 + i % 26); 
+    return i < 0 ? "" : str((i / 26)-1 ) + (char)(65 + i % 26); 
 }
   public ArrayList<String> excel(Integer repeat) throws Exception, AllService{
    ArrayList<String> letras = new ArrayList<String>();

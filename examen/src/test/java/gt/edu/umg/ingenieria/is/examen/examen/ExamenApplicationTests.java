@@ -4,6 +4,8 @@ import gt.edu.umg.ingenieria.is.examen.examen.controller.AllController;
 import gt.edu.umg.ingenieria.is.examen.examen.service.AllService;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,11 +48,28 @@ class ExamenApplicationTests {
             actual = this.ser.excel(columns);
             
             //then
+          
             
-            int a = 1;
             Assertions.assertEquals(expected, actual,"Columnas no coinciden");
             
             
-	}
-
+    }
+         @Test
+    void Item6Prueba2() {
+       int actual = 0;
+        assertThrows(
+            Exception.class,
+            () -> ser.excel(actual));
+    }
+    
+    @Test
+     void Item6Prueba3() {
+       int actual = 100001;
+        assertThrows(
+            Exception.class,
+            () -> ser.excel(actual));
+    }
+     
+       
+    
 }
