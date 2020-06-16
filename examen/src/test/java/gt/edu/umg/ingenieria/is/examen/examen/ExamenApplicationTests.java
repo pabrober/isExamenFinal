@@ -22,6 +22,21 @@ public class ExamenApplicationTests {
     @Autowired 
     private AllService ser;
 
+    @Autowired
+    private AllController allController;
+        
+        
+	@Test
+	public void binarytree() {
+            //given
+            final int[] expected = {6,7,5,3,1};
+            
+            //when
+            
+            //then
+            
+	}
+
     @LocalServerPort
     private int port;
 
@@ -47,8 +62,8 @@ public class ExamenApplicationTests {
     public void item7test2() {
         //given                                
         final Long generation = new Long(10001);
-        HashMap<String, String> expected = new HashMap<>(); 
-        HashMap<String, String> actual = new HashMap<>(); 
+        HashMap<String, String> expected = new HashMap<String, String>(); 
+        HashMap<String, String> actual = new HashMap<String, String>(); 
         //when        
         actual = this.ser.proporcionPobla(generation);
         expected.put("error", "numero invalido");
@@ -127,7 +142,7 @@ public class ExamenApplicationTests {
         Assertions.assertEquals(actual, expected, "objeto incompleto");         
     }
     //7-----TEST FOR GENETIC ALGORITHM-----END
-    
+    //test ejercicio 6
     @Test
 	void Item6Prueba1 () throws Exception {
             
@@ -163,5 +178,7 @@ public class ExamenApplicationTests {
             Exception.class,
             () -> ser.excel(actual));
     }
+     
+     //fin test ejercicio 6
     
 }

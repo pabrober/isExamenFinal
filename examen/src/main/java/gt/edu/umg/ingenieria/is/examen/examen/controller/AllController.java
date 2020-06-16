@@ -1,10 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gt.edu.umg.ingenieria.is.examen.examen.controller;
 
+import gt.edu.umg.ingenieria.is.examen.examen.service.AllService.BinarySearchTree;
+import java.util.HashMap;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
@@ -22,6 +22,8 @@ public class AllController {
     
     @Autowired
     private AllService ser;  
+    @Autowired
+    private BinarySearchTree tree;
         
     
      //7-----GENETIC ALGORITHM-----START
@@ -34,6 +36,13 @@ public class AllController {
      @GetMapping("/book/sheet")
        public ArrayList<String> excel(@RequestParam Integer columns) throws Exception {
        return this.ser.excel(columns);
-       }
+       }  
+
+    @GetMapping("tree/binary")
+    public HashMap<String, List<Integer>> addValues(@RequestParam(name = "data") int elements[])throws Exception {    
+    return this.tree.createTree(elements);
+     
+    }
+
 
 }
