@@ -28,7 +28,7 @@ public class AllService extends Exception {
         }
     }
     // end exception
-     
+
 //Algoritmo de ordenamiento por selección**************************************
     public ArrayList<Long> selectSort(ArrayList<Long> elements) throws Exception, AllService {
         ArrayList<Long> listaOrdenada = null;
@@ -197,7 +197,7 @@ public class AllService extends Exception {
         return letras;
     }
     // finaliza ejercicio 6-----------------------------------------------------
-    
+
     //7-----GENETIC ALGORITHM-----START-----------------------------------------
     public Long[] genes(Long muestra) {
         //algoritmo de genes
@@ -241,7 +241,7 @@ public class AllService extends Exception {
         return map;
     }
     //7-----GENETIC ALGORITHM-----END-------------------------------------------
-    
+
     //Comienzo ejecicio 8-------------------------------------------------------   
     @Transactional
     @Service
@@ -350,7 +350,7 @@ public class AllService extends Exception {
                 tree.insert(elements[i]);
 
             }
-            
+
             search.put("Pre Order", tree.preorder());
             search.put("In Order", tree.inorder());
             search.put("Post Order", tree.postorder());

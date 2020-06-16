@@ -1,42 +1,29 @@
 package gt.edu.umg.ingenieria.is.examen.examen;
 
-import gt.edu.umg.ingenieria.is.examen.examen.controller.AllController;
 import gt.edu.umg.ingenieria.is.examen.examen.service.AllService;
 import gt.edu.umg.ingenieria.is.examen.examen.service.AllService.BinarySearchTree;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
 import java.util.Random;
-import java.util.function.BooleanSupplier;
 import org.junit.jupiter.api.Assertions;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-//import org.junit.jupiter.api.MethodOrderer.Random;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import sun.jvm.hotspot.utilities.Assert;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ExamenApplicationTests {
-
-    @Autowired
-    private AllController con;
 
     @Autowired
     private AllService ser;
 
     @Autowired
     private BinarySearchTree bt;
-
-    @Autowired
-    private AllController allController;
 
     @LocalServerPort
     private int port;
@@ -226,20 +213,20 @@ public class ExamenApplicationTests {
 
         assertEquals(expected, actual, "Datos incorrectos");
     }
-    
+
     @Test
-    public void item8test4() throws Exception{
+    public void item8test4() throws Exception {
         final HashMap<String, List<Integer>> expected = new HashMap<>();
         final ArrayList<Integer> data = new ArrayList<>();
         data.add(50);
         data.add(20);
         data.add(80);
-        
+
         int[] values = {50, 20, 80};
         expected.put("pre Order", data);
-        
+
         assertFalse(bt.createTree(values).isEmpty());
-        
+
     }
     //8-----TEST FOR BINARY TREE-----END
 

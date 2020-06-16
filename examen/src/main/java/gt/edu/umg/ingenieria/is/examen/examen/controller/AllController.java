@@ -26,8 +26,8 @@ public class AllController {
     @Autowired
     private BinarySearchTree tree;
     @Autowired
-    public AllService allServices;        
-       
+    public AllService allServices;
+
     //INICIO Controladores de los primeros 5 casos de uso ******************************************************* 
     @RequestMapping(value = "selectSort/{elements}", method = RequestMethod.GET)
     public ArrayList<Long> selectSort(@PathVariable ArrayList<Long> elements) throws Exception {
@@ -65,21 +65,21 @@ public class AllController {
         return this.allServices.pascalTriangle(nfilas);
     }
     //FIN Controladores de los primeros 5 casos de uso *******************************************************
-    
+
     //Inciso 6 Hoja de excel Inicio
     @GetMapping("/book/sheet")
     public ArrayList<String> excel(@RequestParam Integer columns) throws Exception {
         return this.ser.excel(columns);
     }
     //Inciso 6 Hoja de excel fin
-    
+
     //7-----GENETIC ALGORITHM-----START
     @GetMapping("/ia")
     public Map<String, String> geneticalgorithm(@RequestParam Long generation) {
         return this.ser.proporcionPobla(generation);
     }
     //7-----GENETIC ALGORITHM-----END
-    
+
     //ejercicio 8 inicio
     @GetMapping("tree/binary")
     public HashMap<String, List<Integer>> addValues(@RequestParam(name = "data") int elements[]) throws Exception {
