@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package gt.edu.umg.ingenieria.is.examen.examen.service;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Collections;
@@ -15,7 +14,11 @@ import org.springframework.stereotype.Service;
  * @author pc
  */
 @Service
-public class AllService {    
+public class AllService extends Exception  {   
+    //Exceptions
+  public AllService(){
+        super("numero de elementos fuera de rango");
+    }    
     
     //7-----GENETIC ALGORITHM-----START
     public Long[] genes(Long muestra) {
@@ -32,7 +35,7 @@ public class AllService {
     }
 
     public HashMap<String, String> proporcionPobla(Long muestra) {
-        HashMap<String, String> map = new HashMap<>();
+        HashMap<String, String> map = new HashMap< String, String>();
         Long[] datapro = this.genes(muestra);
         int porcentajeHombres = 0, porcentajeMujeres = 0;
         ArrayList<String> detail = new ArrayList<String>();
@@ -60,4 +63,22 @@ public class AllService {
         return map;
     }
     //7-----GENETIC ALGORITHM-----END
+
+    //Inciso 6 Hoja de excel Inicio
+   public String str(int i) {
+    return i < 0 ? "" : str((i / 26)-1 ) + (char)(65 + i % 26); 
+   }    
+    //Inciso 6 Hoja de excel Fin
+
+    public ArrayList<String> excel(Integer repeat) throws AllService {
+         ArrayList<String> letras = new ArrayList<String>();
+   if(repeat <1 || repeat > 100000){
+        throw new AllService();
+        }
+   for (int i = 0; i < repeat; ++i) {
+       letras.add(this.str(i));
+  }
+      return letras;
+    }
 }
+
