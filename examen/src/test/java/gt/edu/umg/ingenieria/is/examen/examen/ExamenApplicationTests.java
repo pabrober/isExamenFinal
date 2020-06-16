@@ -2,12 +2,17 @@ package gt.edu.umg.ingenieria.is.examen.examen;
 
 import gt.edu.umg.ingenieria.is.examen.examen.controller.AllController;
 import gt.edu.umg.ingenieria.is.examen.examen.service.AllService;
+import gt.edu.umg.ingenieria.is.examen.examen.service.AllService.BinarySearchTree;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import java.util.Random;
+import java.util.function.BooleanSupplier;
 import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 //import org.junit.jupiter.api.MethodOrderer.Random;
 import org.junit.jupiter.api.Test;
@@ -16,6 +21,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import sun.jvm.hotspot.utilities.Assert;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ExamenApplicationTests {
@@ -25,6 +31,9 @@ public class ExamenApplicationTests {
 
     @Autowired
     private AllService ser;
+
+    @Autowired
+    private BinarySearchTree bt;
 
     @Autowired
     private AllController allController;
@@ -134,7 +143,7 @@ public class ExamenApplicationTests {
         Assertions.assertEquals(actual, expected, "objeto incompleto");
     }
     //7-----TEST FOR GENETIC ALGORITHM-----END
-    
+
     //test ejercicio 6
     @Test
     void Item6Prueba1() throws Exception {
@@ -170,16 +179,69 @@ public class ExamenApplicationTests {
                 () -> ser.excel(actual));
     }
     //fin test ejercicio 6
-    
+
+    //8-----TEST FOR BINARY TREE-----START
+    @Test
+    public void item8test1() {
+        int[] actual = null;
+        assertThrows(
+                Exception.class,
+                () -> bt.createTree(actual));
+    }
+
+    @Test
+    public void item8test2() {
+        int[] actual = {1000001};
+
+        if (actual.length < 1 && actual.length > 1000000) {
+            assertThrows(Exception.class, () -> bt.createTree(actual), "Exception Executed");
+        }
+
+    }
+
+    @Test
+    public void item8test3() throws Exception {
+        final HashMap<String, List<Integer>> actual;
+        final HashMap<String, List<Integer>> expected = new HashMap<>();
+        final ArrayList<Integer> data1 = new ArrayList<>();
+        data1.add(50);
+        data1.add(20);
+        data1.add(80);
+        final ArrayList<Integer> data2 = new ArrayList<>();
+        data2.add(20);
+        data2.add(80);
+        data2.add(50);
+        final ArrayList<Integer> data3 = new ArrayList<>();
+        data3.add(20);
+        data3.add(50);
+        data3.add(80);
+
+        int[] values = {50, 20, 80};
+
+        expected.put("Pre Order", data1);
+        expected.put("Post Order", data2);
+        expected.put("In Order", data3);
+
+        actual = this.bt.createTree(values);
+
+        assertEquals(expected, actual, "Datos incorrectos");
+    }
     
     @Test
-    public void binarytree() {
-        //given
-        final int[] expected = {6, 7, 5, 3, 1};
-
-        //when
-        //then
+    public void item8test4() throws Exception{
+        final HashMap<String, List<Integer>> expected = new HashMap<>();
+        final ArrayList<Integer> data = new ArrayList<>();
+        data.add(50);
+        data.add(20);
+        data.add(80);
+        
+        int[] values = {50, 20, 80};
+        expected.put("pre Order", data);
+        
+        assertFalse(bt.createTree(values).isEmpty());
+        
     }
+    //8-----TEST FOR BINARY TREE-----END
 
     @Test
     void contextLoads() {

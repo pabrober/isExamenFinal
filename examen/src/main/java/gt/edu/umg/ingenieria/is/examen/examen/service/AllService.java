@@ -350,7 +350,7 @@ public class AllService extends Exception {
                 tree.insert(elements[i]);
 
             }
-
+            
             search.put("Pre Order", tree.preorder());
             search.put("In Order", tree.inorder());
             search.put("Post Order", tree.postorder());
