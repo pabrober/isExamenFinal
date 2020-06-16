@@ -31,18 +31,20 @@ public class AllController {
     public Map<String, String> geneticalgorithm(@RequestParam Long generation) {    
     return this.ser.proporcionPobla(generation);
     }
+    //7-----GENETIC ALGORITHM-----END
            
     //Inciso 6 Hoja de excel Inicio
      @GetMapping("/book/sheet")
        public ArrayList<String> excel(@RequestParam Integer columns) throws Exception {
        return this.ser.excel(columns);
        }  
-
+    //Inciso 6 Hoja de excel fin
+       
+     //ejercicio 7  inicio
     @GetMapping("tree/binary")
     public HashMap<String, List<Integer>> addValues(@RequestParam(name = "data") int elements[])throws Exception {    
-    return this.tree.createTree(elements);
-     
+    return this.tree.createTree(elements);     
     }
-
+    //ejercicio 7  fin
 
 }
